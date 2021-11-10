@@ -49,7 +49,6 @@ Resources:
       Path: /
       ManagedPolicyArns:
         - !Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
-        - arn:aws:iam::${AWS::AccountId}:policy/electric-fee-s3-policy
       PermissionsBoundary: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:policy/CodeStar_${ProjectId}_PermissionsBoundary'
 
 Outputs:
