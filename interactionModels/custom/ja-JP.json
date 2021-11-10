@@ -1,0 +1,76 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "電気代",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "ElectricBillIntent",
+                    "slots": [
+                        {
+                            "name": "when",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                "今月",
+                                "昨日",
+                                "今日"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        " {when} の電気代は",
+                        " {when} の電気代教えて"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "ElectricBillIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "when",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.233500878898.1293412940223"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.233500878898.1293412940223",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "いつの電気代がしりたいですか"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,7 +1,7 @@
 {
-  "name": "hellonode",
+  "name": "alexa-electric-bill",
   "version": "1.0.0",
-  "description": "Hello World Alexa Skill using ASK Nodejs SDK",
+  "description": "Alexa Skill using ASK Nodejs SDK",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "ask-sdk-core": "2.0.*",
-    "ask-sdk-model": "1.4.*"
+    "ask-sdk-model": "1.4.*",
+    "aws-sdk": "2.952.0",
+    "csv-parse": "^4.16.3",
+    "@geolonia/japanese-numeral": "^0.1.15"
+  },
+  "devDependencies": {
+    "ask-sdk-local-debug": "^1.1.0"
   }
 }

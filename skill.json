@@ -2,15 +2,15 @@
   "manifest": {
     "publishingInformation": {
       "locales": {
-        "en-US": {
-          "summary": "A basic skill made from Alexa Skills Kit template",
+        "ja-JP": {
+          "summary": "電気代おしらせbot",
           "examplePhrases": [
-            "Alexa open hello node",
-            "Alexa tell hello node hello",
-            "Alexa ask hello node say hello"
+            "アレクサ 電気代おしえて",
+            "アレクサ 電気代",
+            "アレクサ 電気代しりたい"
           ],
-          "name": "hello node",
-          "description": "A basic skill made from Alexa Skills Kit template"
+          "name": "電気代",
+          "description": "電気代おしらせbot"
         }
       },
       "isAvailableWorldwide": true,

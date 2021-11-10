@@ -1,0 +1,36 @@
+{
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Alexa Skill (Node.js)",
+            "type": "pwa-node",
+            "request": "launch",
+            "program": "${command:ask.debugAdapterPath}",
+            "args": [
+                "--accessToken",
+                "${command:ask.accessToken}",
+                "--skillId",
+                "${command:ask.skillIdFromWorkspace}",
+                "--handlerName",
+                "handler",
+                "--skillEntryFile",
+                "${workspaceFolder}/lambda/custom/index.js",
+                "--region",
+                "FE"
+            ],
+            "cwd": "${workspaceFolder}/lambda"
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${file}"
+        }
+    ]
+}
