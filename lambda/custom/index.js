@@ -43,8 +43,8 @@ const ElectricBillIntentHandler = {
         && handlerInput.requestEnvelope.request.intent.name === 'ElectricBillIntent';
     },
     async handle(handlerInput) {
-      const bucketName = 'electric-fee-453141222696-ap-notheast-1';
-      const keyName = 'hour_billing.csv'
+      const bucketName = process.env.S3_BUCKET_NAME;
+      const keyName = 'hour_billing.csv';
       const bucketParams = {
         Bucket: bucketName,
         Key: keyName,

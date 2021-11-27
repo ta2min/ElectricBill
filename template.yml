@@ -32,6 +32,9 @@ Resources:
       Handler: index.handler
       Runtime: nodejs12.x
       Role: !GetAtt LambdaExecutionRole.Arn
+      Environment:
+        Variables:
+          S3_BUCKET_NAME: !Sub 'electric-fee-${AWS::AccountId}-ap-notheast-1'
       Events:
         AlexaSkillEvent:
           Type: AlexaSkill
