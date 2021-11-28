@@ -43,8 +43,9 @@ const ElectricBillIntentHandler = {
         && handlerInput.requestEnvelope.request.intent.name === 'ElectricBillIntent';
     },
     async handle(handlerInput) {
+      const date = handlerInput.requestEnvelope.request.intent.slots.when.value;
       const bucketName = process.env.S3_BUCKET_NAME;
-      const keyName = 'hour_billing.csv';
+      const keyName = `hour/${date}.csv`;
       const bucketParams = {
         Bucket: bucketName,
         Key: keyName,
@@ -52,20 +53,25 @@ const ElectricBillIntentHandler = {
       let response = await S3_getObject(bucketParams);
       let text = response.Body.toString("utf-8");
       const records = csv(text, {
-        columns: true,
+        columns: false,
       });
       const total = records.reduce((sum, record,) => {
-        console.log(sum, record['2021年10月10日使用量'], typeof (parseFloat(record['2021年10月10日使用量'])))
-        if (record['2021年10月10日使用量'] !== '') {
-          return sum + parseFloat(record['2021年10月10日使用量']);
+        console.log(sum, record[1], typeof (parseFloat(record[1])))
+        if (record[1] !== '') {
+          return sum + parseFloat(record[1]);
         } else {
           return sum;
         }
       }, 0);
       const unit_price = 19.77
-      const kanjiDayTotal = numeral.number2kanji(Math.ceil(total * unit_price))
-      const speechText = `${kanjiDayTotal}円です`
-      console.log(kanjiDayTotal)
+      let speechText;
+      if (total > 0) {
+        const kanjiDayTotal = numeral.number2kanji(Math.ceil(total * unit_price))
+        speechText = `${kanjiDayTotal}円です`
+        console.log(kanjiDayTotal);
+      } else {
+        speechText = 'ゼロ円です';
+      }
       return handlerInput.responseBuilder
         .speak(speechText)
         //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
