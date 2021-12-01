@@ -46,6 +46,7 @@ const ElectricBillIntentHandler = {
       const date = handlerInput.requestEnvelope.request.intent.slots.when.value;
       const bucketName = process.env.S3_BUCKET_NAME;
       const keyName = `day/${date}.csv`;
+      console.log(keyName);
       const bucketParams = {
         Bucket: bucketName,
         Key: keyName,
