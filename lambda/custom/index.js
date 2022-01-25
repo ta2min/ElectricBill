@@ -64,12 +64,13 @@ const ElectricBillIntentHandler = {
           return sum;
         }
       }, 0);
-      const unit_price = 19.77
+      const unit_price = 29.57
       let speechText;
       if (total > 0) {
-        const kanjiDayTotal = numeral.number2kanji(Math.ceil(total * unit_price))
+        const price = total * unit_price * 1.1;
+        const kanjiDayTotal = numeral.number2kanji(Math.ceil(price))
         speechText = `${kanjiDayTotal}円です`
-        console.log(kanjiDayTotal);
+        console.log(`electric price: ${price}`);
       } else {
         speechText = 'ゼロ円です';
       }
